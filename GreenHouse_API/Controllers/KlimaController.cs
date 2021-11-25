@@ -23,7 +23,7 @@ namespace GreenHouse_API.Controllers
             return Ok(_mgr.GetAll());
         }
 
-        [HttpGet("{Date}")]
+        [HttpGet("{date}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public IActionResult Get(int date)
