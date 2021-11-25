@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
 using System.Net.Sockets;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
@@ -25,25 +26,18 @@ namespace UDP_GreenHouse
             UdpClient client = new UdpClient(7777);
             byte[] data; //Array for data modtagelse 
 
-            IPEndPoint piEndPoint = null; 
+            IPEndPoint piEndPoint = null;
 
-           data = client.Receive(ref piEndPoint);
-
-           Console.WriteLine($"Modtaget IP = {piEndPoint.Address}, port: {piEndPoint.Port}  ");
-
-           string str = Encoding.UTF8.GetString(data);
-
-           Console.WriteLine("modtaget data " + str);
-
-           string txt = JsonSerializer.Serialize(str); //Lavet om til json tekst
-            
-           byte[] bufferTilbage = Encoding.UTF8.GetBytes(txt);
-
-           while (true)
-           {
-               Thread.Sleep(1000);
-               client.Send(bufferTilbage, bufferTilbage.Length, new IPEndPoint(piEndPoint.Address, piEndPoint.Port ));
-           }
+            HttpClient restClient = new HttpClient();
+            while (true)
+            {
+                data = client.Receive(ref piEndPoint);
+                Console.WriteLine($"Modtaget IP = {piEndPoint.Address}, port: {piEndPoint.Port}  ");
+                string str = Encoding.UTF8.GetString(data);
+                Console.WriteLine("modtaget data " + str); StringContent content = new StringContent(str, Encoding.UTF8, "application/json"); 
+                restClient.PostAsync("http://localhost:25347/api/Klima", content);
+           
+            }
         }
 
     }
