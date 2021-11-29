@@ -12,7 +12,7 @@ namespace ModelLib
         public int humidity { get; set; }
         public int Date { get; set; }
 
-        public Klima(int temperature, int date)
+        public Klima(int temperature, int humidity, int date)
         {
             Temperature = temperature;
             Date = date;

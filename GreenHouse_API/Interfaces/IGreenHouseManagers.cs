@@ -12,5 +12,7 @@ namespace GreenHouse_API.Interfaces
 
         public Klima Get(int date);
 
+        bool Create(Klima klima);
+
     }
 }
