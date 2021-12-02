@@ -10,14 +10,19 @@ namespace ModelLib
     {
         public int Temperature { get; set; }
         public int humidity { get; set; }
-        public int Date { get; set; }
+        public DateTime Date { get; private set; }
 
-        public Klima(int temperature, int date)
+      
+
+        public Klima(int temperature, int humidity, DateTime date )
         {
             Temperature = temperature;
-            Date = date;
+            this.humidity = humidity;
+            date = DateTime.Now;
 
         }
+
+
 
 
         public override bool Equals(object? obj)
