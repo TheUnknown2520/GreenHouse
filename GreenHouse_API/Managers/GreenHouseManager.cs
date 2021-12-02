@@ -15,9 +15,11 @@ namespace GreenHouse_API.Managers
         {
             _klimas ??= new List<Klima>()
             {
+
                 new Klima(23, 2411, DateTime.Now),
                 new Klima(20, 2410, DateTime.Now),
                 new Klima(18, 2412, DateTime.Now)
+
             };
         }
 
@@ -34,14 +36,22 @@ namespace GreenHouse_API.Managers
         }
 
 
+        public bool Create(Klima klima)
+        {
+            _klimas.Add(klima);
+            return true;
+        }
+
 
         public void TestCleanUp()
         {
             _klimas = new List<Klima>()
             {
+
                 new Klima(23, 2411, DateTime.Now),
                 new Klima(20, 2410, DateTime.Now),
                 new Klima(18, 2412, DateTime.Now)
+
             };
         }
     }

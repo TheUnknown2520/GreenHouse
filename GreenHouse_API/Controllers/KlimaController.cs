@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using GreenHouse_API.Managers;
 using GreenHouse_API.Interfaces;
+using ModelLib;
 
 namespace GreenHouse_API.Controllers
 {
@@ -32,6 +33,19 @@ namespace GreenHouse_API.Controllers
         }
 
 
-
+        [HttpPost]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public IActionResult Post([FromBody] Klima klima)
+        {
+            try
+            {
+                return Ok(_mgr.Create(klima));
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+        }
     }
 }

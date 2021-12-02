@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,11 +12,13 @@ namespace ModelLib
     {
         public int Temperature { get; set; }
         public int humidity { get; set; }
-        public DateTime Date { get; private set; }
 
-      
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public DateTime Date { get; set; }
 
-        public Klima(int temperature, int humidity, DateTime date )
+        public Klima(int temperature, int humidity, DateTime date)
+
         {
             Temperature = temperature;
             this.humidity = humidity;
