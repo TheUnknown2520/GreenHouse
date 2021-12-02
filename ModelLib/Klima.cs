@@ -10,19 +10,24 @@ namespace ModelLib
 {
     public class Klima
     {
-        public int Temperature { get; set; }
-        public int humidity { get; set; }
+        public double Temperature { get; set; }
+        public double humidity { get; set; }
 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public DateTime Date { get; set; }
 
-        public Klima(int temperature, int humidity, DateTime date)
+        public Klima()
+        {
+
+        }
+
+        public Klima( DateTime date, double temperature, double humidity)
 
         {
             Temperature = temperature;
             this.humidity = humidity;
-            date = DateTime.Now;
+            Date = date;
 
         }
 

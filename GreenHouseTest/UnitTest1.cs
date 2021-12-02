@@ -41,8 +41,8 @@ namespace GreenHouseTest
         {
 
 
-            Klima ecpectedKlima = new Klima(23, 2411, DateTime.Now);
-            Klima actualAththe = _mgr.Get(DateTime.Now);
+            Klima ecpectedKlima = new Klima( System.DateTime.Now, 11, 200);
+            Klima actualAththe = _mgr.Get(System.DateTime.Now);
             Assert.AreEqual(ecpectedKlima, actualAththe);
 
         }
@@ -52,10 +52,10 @@ namespace GreenHouseTest
         [TestMethod]
         [DataRow(20, 96, 2911  )]
         [DataRow(21, 100, 3011)]
-        public void CreateTest(int temperature, int humidity, int date)
+        public void CreateTest(int temperature, int humidity, DateTime date)
         {
             var originalListLength = _mgr.GetAll().Count();
-            var CreateClima = new Klima(temperature, humidity, date);
+            var CreateClima = new Klima( date, temperature, humidity);
 
             var result = _mgr.Create(CreateClima);
             Assert.IsTrue(result);
