@@ -15,9 +15,11 @@ namespace GreenHouse_API.Managers
         {
             _klimas ??= new List<Klima>()
             {
-                new Klima(23, 90, 2411),
-                new Klima(20, 90, 2410),
-                new Klima(18, 90, 2412)
+
+                new Klima(23, 2411, DateTime.Now),
+                new Klima(20, 2410, DateTime.Now),
+                new Klima(18, 2412, DateTime.Now)
+
             };
         }
 
@@ -26,12 +28,13 @@ namespace GreenHouse_API.Managers
             return _klimas;
         }
 
-        public Klima Get(int date)
+        public Klima Get(DateTime date)
         {
             var klima = _klimas.Find(k => k.Date == date);
             if (klima == null) throw new KeyNotFoundException("der er ikke nogle målinger på denne dato");
             return klima;
         }
+
 
         public bool Create(Klima klima)
         {
@@ -39,13 +42,16 @@ namespace GreenHouse_API.Managers
             return true;
         }
 
+
         public void TestCleanUp()
         {
             _klimas = new List<Klima>()
             {
-                new Klima(23, 89, 2411),
-                new Klima(20, 98, 2410),
-                new Klima(18, 90, 2412)
+
+                new Klima(23, 2411, DateTime.Now),
+                new Klima(20, 2410, DateTime.Now),
+                new Klima(18, 2412, DateTime.Now)
+
             };
         }
     }

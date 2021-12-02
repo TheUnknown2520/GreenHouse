@@ -27,7 +27,7 @@ namespace GreenHouse_API.Controllers
         [HttpGet("{date}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public IActionResult Get(int date)
+        public IActionResult Get(DateTime date)
         {
             return Ok(_mgr.Get(date));
         }
