@@ -17,7 +17,7 @@ namespace GreenHouse_API.Controllers
         private IGreenHouseManagers _mgr = new GreenHouseManager();
 
         [HttpGet]
-        [Route("all")]
+        [Route("all/Values")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public IActionResult GetAll()
