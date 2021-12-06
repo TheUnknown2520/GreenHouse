@@ -16,13 +16,14 @@ namespace GreenHouse_API.Controllers
     {
         private IGreenHouseManagers _mgr = new GreenHouseManager();
 
-        //[HttpGet]
-        //[ProducesResponseType(StatusCodes.Status200OK)]
-        //[ProducesResponseType(StatusCodes.Status400BadRequest)]
-        //public IActionResult GetAll()
-        //{
-        //    return Ok(_mgr.GetAll());
-        //}
+        [HttpGet]
+        [Route("all/Values")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public IActionResult GetAll()
+        {
+            return Ok(_mgr.GetAll());
+        }
 
         [HttpGet("{date}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
