@@ -30,7 +30,7 @@ namespace GreenHouse_API.Managers
 
         public Klima Get(DateTime date)
         {
-            var klima = _klimas.Find(k => k.Date == date);
+            var klima = _klimas.Find(k => CheckDate(k.Date, date));
             if (klima == null) throw new KeyNotFoundException("der er ikke nogle målinger på denne dato");
             return klima;
         }
@@ -58,6 +58,16 @@ namespace GreenHouse_API.Managers
                 new Klima(DateTime.Now, 23, 2411),
 
             };
+        }
+
+        private bool CheckDate(DateTime actual1, DateTime date2)
+        {
+            if (actual1.Year == date2.Year && actual1.Month == date2.Month && actual1.Day == date2.Day && actual1.Hour == date2.Hour)
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }
