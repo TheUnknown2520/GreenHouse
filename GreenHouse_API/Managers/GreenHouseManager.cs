@@ -16,9 +16,9 @@ namespace GreenHouse_API.Managers
             _klimas ??= new List<Klima>()
             {
 
-                new Klima(System.DateTime.Now, 23, 2411),
-                new Klima(System.DateTime.Now, 23, 2411),
-                new Klima(DateTime.Now, 23, 2411),
+                new Klima(System.DateTime.Now, 24, 80),
+                new Klima(System.DateTime.Now, 23, 30),
+                new Klima(DateTime.Now, 19, 40),
 
             };
         }
