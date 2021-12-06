@@ -35,6 +35,11 @@ namespace GreenHouse_API.Managers
             return klima;
         }
 
+        public Klima GetLatest()
+        {
+            int test = _klimas.Count();
+            return _klimas[test - 1];
+        }
 
         public bool Create(Klima klima)
         {

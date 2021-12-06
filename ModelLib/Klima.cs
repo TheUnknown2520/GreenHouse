@@ -22,7 +22,7 @@ namespace ModelLib
 
         }
 
-        public Klima( DateTime date, double temperature, double humidity)
+        public Klima(DateTime date, double temperature, double humidity)
 
         {
             Temperature = temperature;

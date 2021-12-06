@@ -14,5 +14,7 @@ namespace GreenHouse_API.Interfaces
 
         bool Create(Klima klima);
 
+        public Klima GetLatest();
+
     }
 }
