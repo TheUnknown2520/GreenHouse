@@ -11,7 +11,7 @@ namespace ModelLib
     public class Klima
     {
         public double Temperature { get; set; }
-        public double humidity { get; set; }
+        public double Humidity { get; set; }
 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -26,7 +26,7 @@ namespace ModelLib
 
         {
             Temperature = temperature;
-            this.humidity = humidity;
+            this.Humidity = humidity;
             Date = date;
 
         }
@@ -41,7 +41,7 @@ namespace ModelLib
             {
                 var OtherKlima = (Klima)obj;
                 if (this.Date.Equals(OtherKlima.Date) && this.Temperature.Equals(OtherKlima.Temperature) &&
-                    this.humidity.Equals(OtherKlima.humidity)) return true;
+                    this.Humidity.Equals(OtherKlima.Humidity)) return true;
                 return false;
             }
             catch (InvalidCastException)
@@ -53,7 +53,7 @@ namespace ModelLib
 
         public override string ToString()
         {
-            return $"klima: dato - {Date} Tempartur - {Temperature} Luftfugtighed - {humidity}  ";
+            return $"klima: dato - {Date} Temperatur - {Temperature} Luftfugtighed - {Humidity}  ";
         }
 
 
