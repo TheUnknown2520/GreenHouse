@@ -69,5 +69,22 @@ namespace GreenHouse_API.Managers
 
             return false;
         }
+
+        public List<Klima> GetLast24Hours()
+        {
+            DateTime dateNow = DateTime.Now;
+            DateTime h = dateNow.AddHours(-24);
+            List<Klima> døgnList = new List<Klima>();
+
+            foreach (var k in _klimas)
+            {
+                if (k.Date > h && k.Date <= dateNow)
+                {
+                    døgnList.Add(k);
+                }
+            }
+
+            return døgnList;
+        }
     }
 }
