@@ -43,6 +43,7 @@ namespace GreenHouse_API.Controllers
         }
 
         [HttpGet]
+        [Route("get/last/24h")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public IActionResult Getlast24()
