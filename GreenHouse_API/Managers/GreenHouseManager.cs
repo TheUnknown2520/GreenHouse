@@ -19,7 +19,7 @@ namespace GreenHouse_API.Managers
                 new Klima(System.DateTime.Now, 24, 80),
                 new Klima(System.DateTime.Now, 23, 30),
                 new Klima(DateTime.Now, 19, 40),
-                new Klima(DateTime.Now.AddHours(-22), 19, 40),
+                //new Klima(DateTime.Now.AddHours(-22), 19, 40),
 
             };
         }
