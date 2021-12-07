@@ -42,6 +42,13 @@ namespace GreenHouse_API.Controllers
             return Ok(_mgr.GetLatest());
         }
 
+        [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public IActionResult Getlast24()
+        {
+            return Ok(_mgr.GetLast24Hours());
+        }
 
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK)]
