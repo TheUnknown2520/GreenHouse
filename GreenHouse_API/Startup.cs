@@ -31,6 +31,26 @@ namespace GreenHouse_API
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "GreenHouse_API", Version = "v1" });
             });
+
+            // CORS 
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowSpecificOrigin",
+                    builder => builder.WithOrigins("http://zealand.dk").
+                        AllowAnyMethod().
+                        AllowAnyHeader()
+                );
+                options.AddPolicy("AllowAny",
+                    builder => builder.AllowAnyOrigin().
+                        AllowAnyMethod().
+                        AllowAnyHeader()
+                );
+                options.AddPolicy("AllowOnlyGetPut",
+                    builder => builder.AllowAnyOrigin().
+                        WithMethods("GET", "PUT").
+                        AllowAnyHeader()
+                );
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -44,6 +64,8 @@ namespace GreenHouse_API
             }
 
             app.UseRouting();
+
+            app.UseCors("AllowOnlyGetPut");
 
             app.UseAuthorization();
 

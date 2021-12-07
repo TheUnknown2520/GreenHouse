@@ -6,6 +6,8 @@ namespace UDP_GreenHouse
     {
         static void Main(string[] args)
         {
+            UDP_Reciever reciever = new UDP_Reciever();
+            reciever.start();
             
         }
     }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using ModelLib;
 
 namespace GreenHouse_API.Models
 {
@@ -12,6 +13,8 @@ namespace GreenHouse_API.Models
         {
             option.UseSqlServer(@"Data Source=(LocalDB)\MSSQLLocalDB;Initial Catalog=GreenHouseDB; Integrated Security=True; Connect Timeout=30; Encrypt=False");
         }
+
+        public DbSet<Klima> Klimas { get; set; }
 
 
     }

@@ -10,9 +10,11 @@ namespace GreenHouse_API.Interfaces
     {
         public List<Klima> GetAll();
 
-        public Klima Get(int date);
+        public Klima Get(DateTime date);
 
-        bool Create(Klima klima);
+        Klima Create(Klima klima);
+
+        public Klima GetLatest();
 
     }
 }

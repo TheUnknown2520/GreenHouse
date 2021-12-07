@@ -2,6 +2,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using GreenHouse_API.Managers;
 using ModelLib;
 using System.Linq;
+using System;
 
 namespace GreenHouseTest
 {
@@ -26,39 +27,44 @@ namespace GreenHouseTest
         [TestMethod]
         public void GetAllTest()
         {
+
             int expectedCount = 3;
-
             int ActualCount = _mgr.GetAll().Count();
-
             Assert.AreEqual(expectedCount, ActualCount);
+
         }
+
+
 
         [TestMethod]
         public void GetTempByDate()
         {
-            Klima ecpectedKlima = new Klima(23, 65, 2411);
 
-            Klima actualAththe = _mgr.Get(2411);
 
+            Klima ecpectedKlima = new Klima( System.DateTime.Now, 11, 200);
+            Klima actualAththe = _mgr.Get(System.DateTime.Now);
             Assert.AreEqual(ecpectedKlima, actualAththe);
+
         }
+
 
 
         [TestMethod]
         [DataRow(20, 96, 2911  )]
         [DataRow(21, 100, 3011)]
-        public void CreateTest(int temperature, int humidity, int date)
+        public void CreateTest(int temperature, int humidity, DateTime date)
         {
             var originalListLength = _mgr.GetAll().Count();
-            var CreateClima = new Klima(temperature, humidity, date);
+            var CreateClima = new Klima( date, temperature, humidity);
 
             var result = _mgr.Create(CreateClima);
             Assert.IsTrue(result);
 
-            //tjekker at list størelsen er blevet støre 
+            //tjekker at list stÃ¸relsen er blevet stÃ¸re 
             var newListLength = _mgr.GetAll().Count();
             Assert.AreEqual(originalListLength + 1, newListLength);
         }
+
 
     }
 }

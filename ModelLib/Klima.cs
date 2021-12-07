@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,15 +10,27 @@ namespace ModelLib
 {
     public class Klima
     {
-        public int Temperature { get; set; }
-        public int humidity { get; set; }
-        public int Date { get; set; }
+        public double Temperature { get; set; }
+        public double Humidity { get; set; }
 
-        public Klima(int temperature, int humidity, int date)
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public DateTime Date { get; set; }
+
+        public Klima()
+        {
+
+        }
+
+        public Klima(DateTime date, double temperature, double humidity)
+
         {
             Temperature = temperature;
+            this.Humidity = humidity;
             Date = date;
         }
+
+
 
 
         public override bool Equals(object? obj)
@@ -26,7 +40,7 @@ namespace ModelLib
             {
                 var OtherKlima = (Klima)obj;
                 if (this.Date.Equals(OtherKlima.Date) && this.Temperature.Equals(OtherKlima.Temperature) &&
-                    this.humidity.Equals(OtherKlima.humidity)) return true;
+                    this.Humidity.Equals(OtherKlima.Humidity)) return true;
                 return false;
             }
             catch (InvalidCastException)
@@ -38,7 +52,7 @@ namespace ModelLib
 
         public override string ToString()
         {
-            return $"klima: dato - {Date} Tempartur - {Temperature} Luftfugtighed - {humidity}  ";
+            return $"klima: dato - {Date} Temperatur - {Temperature} Luftfugtighed - {Humidity}  ";
         }
 
 

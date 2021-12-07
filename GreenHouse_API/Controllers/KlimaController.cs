@@ -17,6 +17,7 @@ namespace GreenHouse_API.Controllers
         private IGreenHouseManagers _mgr = new GreenHouseManager();
 
         [HttpGet]
+        [Route("all/Values")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public IActionResult GetAll()
@@ -27,9 +28,18 @@ namespace GreenHouse_API.Controllers
         [HttpGet("{date}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public IActionResult Get(int date)
+        public IActionResult Get(DateTime date)
         {
             return Ok(_mgr.Get(date));
+        }
+
+
+        [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public IActionResult GetLatest()
+        {
+            return Ok(_mgr.GetLatest());
         }
 
 
