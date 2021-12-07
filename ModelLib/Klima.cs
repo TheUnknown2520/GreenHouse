@@ -16,7 +16,6 @@ namespace ModelLib
         {
             Temperature = temperature;
             Date = date;
-
         }
 
 
