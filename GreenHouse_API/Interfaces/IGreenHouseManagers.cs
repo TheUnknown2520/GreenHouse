@@ -16,5 +16,7 @@ namespace GreenHouse_API.Interfaces
 
         public Klima GetLatest();
 
+        public List<Klima> GetLast24Hours();
+
     }
 }

@@ -28,7 +28,6 @@ namespace ModelLib
             Temperature = temperature;
             this.Humidity = humidity;
             Date = date;
-
         }
 
 

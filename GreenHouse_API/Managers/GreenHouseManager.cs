@@ -17,8 +17,9 @@ namespace GreenHouse_API.Managers
             {
 
                 new Klima(System.DateTime.Now, 24, 80),
-                new Klima(System.DateTime.Now, 23, 30),
+                new Klima(System.DateTime.Now.AddHours(-28), 23, 30),
                 new Klima(DateTime.Now, 19, 40),
+                //new Klima(DateTime.Now.AddHours(-22), 19, 40),
 
             };
         }
@@ -68,6 +69,23 @@ namespace GreenHouse_API.Managers
             }
 
             return false;
+        }
+
+        public List<Klima> GetLast24Hours()
+        {
+            DateTime dateNow = DateTime.Now;
+            DateTime h = dateNow.AddHours(-24);
+            List<Klima> døgnList = new List<Klima>();
+
+            foreach (var k in _klimas)
+            {
+                if (k.Date > h && k.Date <= dateNow)
+                {
+                    døgnList.Add(k);
+                }
+            }
+
+            return døgnList;
         }
     }
 }
