@@ -10,12 +10,14 @@ namespace GreenHouseTest
     [TestClass]
     public class UnitTest1
     {
+        public List<Klima> Klimas = new List<Klima>();
         private GreenHouseManager _mgr;
 
         [TestInitialize]
         public void SetUp()
         {
             _mgr = new GreenHouseManager();
+            Klimas = _mgr.GetAll();
             _mgr.TestCleanUp();
         }
 
@@ -39,12 +41,13 @@ namespace GreenHouseTest
 
         [TestMethod]
         public void GetTempByDate()
-        {
-
-
+        {            
             Klima ecpectedKlima = new Klima(System.DateTime.Now, 11, 200);
-            _mgr.GetAll().Add(ecpectedKlima);
-            Klima actualAththe = _mgr.Get(ecpectedKlima.Date);
+
+            Klimas.Add(ecpectedKlima);
+            
+             Klima actualAththe = _mgr.Get(ecpectedKlima.Date);
+                
             Assert.AreEqual(ecpectedKlima, actualAththe);
 
         }
@@ -61,7 +64,7 @@ namespace GreenHouseTest
             var CreateClima = new Klima( DateTime.Now, 23, 80);
 
             var result = _mgr.Create(CreateClima);
-            Assert.AreEqual(96, result.Temperature);
+            Assert.IsTrue(result);
             
             //tjekker at list størelsen er blevet støre 
             var newListLength = _mgr.GetAll().Count();
