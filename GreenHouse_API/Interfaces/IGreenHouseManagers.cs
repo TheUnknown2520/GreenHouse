@@ -12,7 +12,7 @@ namespace GreenHouse_API.Interfaces
 
         public Klima Get(DateTime date);
 
-        Klima Create(Klima klima);
+        bool Create(Klima klima);
 
         public Klima GetLatest();
 

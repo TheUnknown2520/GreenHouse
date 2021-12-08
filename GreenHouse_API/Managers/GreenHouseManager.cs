@@ -41,10 +41,10 @@ namespace GreenHouse_API.Managers
             return _klimas[test - 1];
         }
 
-        public Klima Create(Klima klima)
+        public bool Create(Klima klima)
         {
             _klimas.Add(klima);
-            return klima;
+            return true;
         }
 
 
