@@ -54,9 +54,9 @@ namespace GreenHouse_API.Managers
             _klimas = new List<Klima>()
             {
 
-                new Klima(System.DateTime.Now, 23, 2411),
-                new Klima(System.DateTime.Now, 23, 2411),
-                new Klima(DateTime.Now, 23, 2411),
+                new Klima(System.DateTime.Now, 24, 80),
+                new Klima(System.DateTime.Now.AddHours(-28), 23, 30),
+                new Klima(DateTime.Now, 19, 40),
 
             };
         }
@@ -77,7 +77,7 @@ namespace GreenHouse_API.Managers
             DateTime h = dateNow.AddHours(-24);
             List<Klima> døgnList = new List<Klima>();
 
-            foreach (var k in _klimas)
+            foreach (var k in GetAll())
             {
                 if (k.Date > h && k.Date <= dateNow)
                 {
