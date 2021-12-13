@@ -29,11 +29,12 @@ namespace GreenHouse_API.Managers
             return _klimas;
         }
 
-        public Klima Get(DateTime date)
+        public IEnumerable<Klima> Get(DateTime date)
         {
-            var klima = _klimas.Find(k => CheckDate(k.Date, date));
-            if (klima == null) throw new KeyNotFoundException("der er ikke nogle målinger på denne dato");
-            return klima;
+            //var klima = _klimas.Find(k => CheckDate(k.Date, date));
+            //if (klima == null) throw new KeyNotFoundException("der er ikke nogle målinger på denne dato");
+            //return klima;
+            return _klimas.Where(x => x.Date.Equals(date));
         }
 
         public Klima GetLatest()
