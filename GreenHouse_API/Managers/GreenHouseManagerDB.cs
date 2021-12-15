@@ -11,16 +11,16 @@ namespace GreenHouse_API.Managers
 {
     public class GreenHouseManagerDB : IGreenHouseManagers
     {
-        private readonly GreenHouseDbContext dbContext;
+        private readonly GreenHouseDbContext _dbContext;
         public List<Klima> _klima = new List<Klima>();
         public GreenHouseManagerDB(GreenHouseDbContext DbContext)
         {
-            DbContext = dbContext;
+            _dbContext = DbContext;
             _klima = GetAll().ToList();
         }
         public IEnumerable<Klima> GetAll()
         {
-            return dbContext.Klimas.ToList();
+            return _dbContext.Klimas.ToList();
         }
 
         public Klima Get(DateTime date)
@@ -40,8 +40,8 @@ namespace GreenHouse_API.Managers
         {
             try
             {
-                dbContext.Klimas.Add(klima);
-                dbContext.SaveChanges();
+                _dbContext.Klimas.Add(klima);
+                _dbContext.SaveChanges();
                 return true;
             }
             catch (Exception e)

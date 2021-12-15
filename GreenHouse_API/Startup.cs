@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using GreenHouse_API.Managers;
 using GreenHouse_API.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -28,10 +29,11 @@ namespace GreenHouse_API
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddDbContext<GreenHouseDbContext>(opt =>
-                opt.UseSqlServer(MySecrets.ConnectionString));
+            services.AddDbContext<GreenHouseDbContext>(opt =>opt.UseSqlServer(@"Data Source=(LocalDB)\MSSQLLocalDB;Initial Catalog=GreenHouseDB; Integrated Security=True; Connect Timeout=30; Encrypt=False"));
+                
+            //services.AddSingleton<GreenHouseManagerDB, GreenHouseManagerDB>();
 
-            services.AddControllers();
+                services.AddControllers();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "GreenHouse_API", Version = "v1" });
