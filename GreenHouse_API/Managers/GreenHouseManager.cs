@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using ModelLib;
 using GreenHouse_API.Interfaces;
+using GreenHouse_API.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace GreenHouse_API.Managers
 {
@@ -24,9 +26,13 @@ namespace GreenHouse_API.Managers
             };
         }
 
-        public List<Klima> GetAll()
+        public IEnumerable<Klima> GetAll()
         {
+
             return _klimas;
+
+
+
         }
 
         public IEnumerable<Klima> Get(DateTime date)

@@ -2,7 +2,7 @@
 
 namespace GreenHouse_API.Migrations
 {
-    public partial class start : Migration
+    public partial class h : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
