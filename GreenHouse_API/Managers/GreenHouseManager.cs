@@ -34,7 +34,7 @@ namespace GreenHouse_API.Managers
             //var klima = _klimas.Find(k => CheckDate(k.Date, date));
             //if (klima == null) throw new KeyNotFoundException("der er ikke nogle målinger på denne dato");
             //return klima;
-            return _klimas.Where(x => x.Date.Equals(date));
+           return _klimas.Where(x => x.Date.Equals(date));
         }
 
         public Klima GetLatest()
