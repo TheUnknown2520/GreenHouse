@@ -8,7 +8,7 @@ namespace GreenHouse_API.Interfaces
 {
     interface IGreenHouseManagers
     {
-        public List<Klima> GetAll();
+        public IEnumerable<Klima> GetAll();
 
         public IEnumerable<Klima> Get(DateTime date);
 

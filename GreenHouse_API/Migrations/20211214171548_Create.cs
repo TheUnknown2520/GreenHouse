@@ -1,8 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace GreenHouse_API.Migrations
 {
-    public partial class Createtable : Migration
+    public partial class Create : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -10,10 +11,9 @@ namespace GreenHouse_API.Migrations
                 name: "Klimas",
                 columns: table => new
                 {
-                    Date = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Temperature = table.Column<int>(type: "int", nullable: false),
-                    humidity = table.Column<int>(type: "int", nullable: false)
+                    Date = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Temperature = table.Column<double>(type: "float", nullable: false),
+                    Humidity = table.Column<double>(type: "float", nullable: false)
                 },
                 constraints: table =>
                 {

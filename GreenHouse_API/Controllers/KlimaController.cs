@@ -3,9 +3,11 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Policy;
 using System.Threading.Tasks;
 using GreenHouse_API.Managers;
 using GreenHouse_API.Interfaces;
+using GreenHouse_API.Models;
 using ModelLib;
 
 namespace GreenHouse_API.Controllers
@@ -15,6 +17,11 @@ namespace GreenHouse_API.Controllers
     public class KlimaController : ControllerBase
     {
         private IGreenHouseManagers _mgr = new GreenHouseManager();
+
+        public KlimaController(GreenHouseDbContext context)
+        {
+            _mgr = new GreenHouseManagerDB(context);
+        }
 
         [HttpGet]
         [Route("all/Values")]
