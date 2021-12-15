@@ -17,7 +17,7 @@ namespace GreenHouseTest
         public void SetUp()
         {
             _mgr = new GreenHouseManager();
-            Klimas = _mgr.GetAll();
+            Klimas = _mgr.GetAll().ToList();
             _mgr.TestCleanUp();
         }
 
@@ -79,19 +79,19 @@ namespace GreenHouseTest
             Assert.AreEqual(2, døgList.Count);
 
             Klima klima1 = new Klima(DateTime.Now.AddHours(-23), 24, 2088);
-            _mgr.GetAll().Add(klima1);
+            _mgr.Create(klima1);
             døgList = _mgr.GetLast24Hours();
             Assert.AreEqual(3, døgList.Count, 0.001);
             Cleanup();
 
             Klima klima2 = new Klima(DateTime.Now.AddHours(-24), 24, 2088);
-            _mgr.GetAll().Add(klima2);
+            _mgr.Create(klima2);
             døgList = _mgr.GetLast24Hours();
             Assert.AreEqual(2, døgList.Count, 0.001);
             Cleanup();
 
             Klima klima3 = new Klima(DateTime.Now.AddHours(-25), 24, 2088);
-            _mgr.GetAll().Add(klima3);
+            _mgr.Create(klima3);
             døgList = _mgr.GetLast24Hours();
             Assert.AreEqual(2, døgList.Count, 0.001);
 
