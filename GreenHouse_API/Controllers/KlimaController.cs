@@ -18,10 +18,10 @@ namespace GreenHouse_API.Controllers
     {
         private IGreenHouseManagers _mgr = new GreenHouseManager();
 
-        public KlimaController(GreenHouseDbContext context)
-        {
-            _mgr = new GreenHouseManagerDB(context);
-        }
+        //public KlimaController(GreenHouseDbContext context)
+        //{
+        //    _mgr = new GreenHouseManagerDB(context);
+        //}
 
         [HttpGet]
         [Route("all/Values")]
