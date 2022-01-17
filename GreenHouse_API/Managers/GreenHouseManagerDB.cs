@@ -23,13 +23,14 @@ namespace GreenHouse_API.Managers
             return _dbContext.Klimas.ToList();
         }
 
-        public Klima Get(DateTime date)
+        public IEnumerable<Klima> Get(DateTime date)
         {
             foreach (var Obj in _klima)
             {
                 if (Obj.Date == date)
                 {
-                    return Obj;
+                    _klima.Add(Obj);
+                    return _klima;
                 }
             }
 

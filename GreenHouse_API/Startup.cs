@@ -29,7 +29,7 @@ namespace GreenHouse_API
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddDbContext<GreenHouseDbContext>(opt =>opt.UseSqlServer(@"Data Source=(LocalDB)\MSSQLLocalDB;Initial Catalog=GreenHouseDB; Integrated Security=True; Connect Timeout=30; Encrypt=False"));
+            services.AddDbContext<GreenHouseDbContext>(opt =>opt.UseSqlServer("Server=tcp:greenhouse-apidbserver.database.windows.net,1433;Initial Catalog=GreenHouse_API_db;Persist Security Info=False;User ID=green2022;Password={your_password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"));
                 
             //services.AddSingleton<GreenHouseManagerDB, GreenHouseManagerDB>();
 
