@@ -1,12 +1,12 @@
-name: Build and deploy .NET Core app to Windows WebApp UAService
+name: Build and deploy .NET Core app to Windows WebApp Green-HouseAPI
 on:
   push:
     branches:
     - master
 env:
-  AZURE_WEBAPP_NAME: UAService
+  AZURE_WEBAPP_NAME: Green-HouseAPI
   AZURE_WEBAPP_PACKAGE_PATH: GreenHouse_API/publish
-  AZURE_WEBAPP_PUBLISH_PROFILE: ${{ secrets.UAService_7e5b }}
+  AZURE_WEBAPP_PUBLISH_PROFILE: ${{ secrets.Green_HouseAPI_5b8f }}
   CONFIGURATION: Release
   DOTNET_CORE_VERSION: 5.0.x
   WORKING_DIRECTORY: GreenHouse_API
